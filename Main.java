@@ -302,7 +302,7 @@ public class Main {
     private static void runFilterTask(Scanner scanner) {
         System.out.println("\nВыберите тип фильтрации:");
         System.out.println("1. Фильтрация строк по длине (длина строки > 3)");
-        System.out.println("2. Фильтрация чисел по четности (только четные числа)");
+        System.out.println("2. Фильтрация чисел по положительности (только положительные числа)");
         System.out.println("3. Фильтрация массивов по наличию максимального элемента больше 10");
         System.out.print("Ваш выбор: ");
     
@@ -330,7 +330,7 @@ public class Main {
                 for (String num : numberInput) {
                     numbers.add(Integer.parseInt(num));
                 }
-                System.out.println("Результат: " + ListTransformer.filterList(numbers, num -> num % 2 == 0));
+                System.out.println("Результат: " + ListTransformer.filterList(numbers, num -> num > 0));
                 break;
             case 3:
                 // Ввод списка массивов
