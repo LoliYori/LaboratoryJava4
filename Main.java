@@ -303,7 +303,7 @@ public class Main {
         System.out.println("\nВыберите тип фильтрации:");
         System.out.println("1. Фильтрация строк по длине (длина строки > 3)");
         System.out.println("2. Фильтрация чисел по положительности (только положительные числа)");
-        System.out.println("3. Фильтрация массивов по наличию максимального элемента больше 10");
+        System.out.println("3. Фильтрация массивов без положительных чисел");
         System.out.print("Ваш выбор: ");
     
         int filterChoice;
@@ -346,10 +346,17 @@ public class Main {
                     }
                     arrays.add(array);
                 }
-                
-                // Вывод отфильтрованных массивов
-                System.out.println("Результат: " + ListTransformer.filterList(arrays, arr -> Arrays.stream(arr).max().orElse(Integer.MIN_VALUE) > 10));
+            
+                // Фильтрация массивов, в которых нет положительных элементов
+                List<int[]> filteredArrays = ListTransformer.filterList(arrays, arr -> Arrays.stream(arr).noneMatch(num -> num > 0));
+            
+                // Печать отфильтрованных массивов
+                System.out.println("Результат: ");
+                for (int[] array : filteredArrays) {
+                    System.out.println(Arrays.toString(array));
+                }
                 break;
+
     
             default:
                 System.out.println("Ошибка: выберите корректный номер.");
